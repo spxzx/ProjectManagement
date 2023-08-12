@@ -1,0 +1,1 @@
+protoc --go_out=./menu --go_opt=paths=source_relative --go-grpc_out=./menu --go-grpc_opt=paths=source_relative  menu_service.proto

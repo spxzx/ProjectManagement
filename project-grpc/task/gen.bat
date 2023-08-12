@@ -1,0 +1,1 @@
+protoc --go_out=./task --go_opt=paths=source_relative --go-grpc_out=./task --go-grpc_opt=paths=source_relative  task_service.proto

@@ -1,0 +1,99 @@
+syntax = "proto3";
+option go_package = "project-user/pkg/service/login";
+
+import "google/protobuf/empty.proto";
+
+package login.service;
+
+message CaptchaRequest {
+  string mobile = 1;
+}
+message CaptchaResponse {
+  string code = 1;
+}
+message RegisterRequest {
+  string email = 1;
+  string name = 2;
+  string password =3;
+  string mobile = 4;
+  string captcha = 5;
+}
+message Member {
+  int64 id = 1;
+  string name = 2;
+  string mobile = 3;
+  string realname = 4;
+  string account = 5;
+  int32 status = 6;
+  string lastLoginTime = 7;
+  string address = 8;
+  int32 province = 9;
+  int32 city = 10;
+  int32 area = 11;
+  string email = 12;
+  string code = 13;
+  string createTime = 14;
+  string organizationCode = 15;
+  string avatar = 16;
+}
+message Organization {
+  int64 id = 1;
+  string name = 2;
+  string avatar = 3;
+  string description = 4;
+  int64 memberId = 5;
+  string createTime = 6;
+  int32 personal = 7;
+  string address = 8;
+  int32 province = 9;
+  int32 city = 10;
+  int32 area = 11;
+  string code = 12;
+  string ownerCode = 13;
+}
+message Token {
+  string accessToken = 1;
+  string refreshToken = 2;
+  string tokenType = 3;
+  int64 accessTokenExp = 4;
+}
+message LoginRequest {
+  string account = 1;
+  string password = 2;
+  string ip = 3;
+}
+message LoginResponse {
+  Member member = 1;
+  Token tokenList = 2;
+  repeated Organization organizationList = 3;
+}
+message TokenVerifyRequest {
+  string token = 1;
+  string ip = 2;
+}
+message TokenVerifyResponse {
+  Member member = 1;
+}
+message OrgRequest {
+  int64 memberId = 1;
+}
+message OrgResponse {
+  repeated Organization organizationList = 1;
+}
+message MemRequest {
+  int64 memberId = 1;
+  repeated int64  memIds = 2;
+}
+message MemberInfoResponse {
+  repeated Member list = 1;
+}
+
+service LoginService {
+  rpc GetCaptcha(CaptchaRequest) returns (CaptchaResponse) {}
+  rpc Register(RegisterRequest) returns (google.protobuf.Empty) {}
+  rpc Login(LoginRequest) returns (LoginResponse) {}
+  rpc TokenVerify(TokenVerifyRequest) returns (TokenVerifyResponse) {}
+  rpc GetOrgList(OrgRequest) returns (OrgResponse) {}
+  rpc FindMemInfoById(MemRequest) returns (Member) {}
+  rpc FindMemInfoByIds(MemRequest) returns (MemberInfoResponse) {}
+}

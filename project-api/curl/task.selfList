@@ -1,0 +1,8 @@
+curl --request POST \
+  --url http://localhost/project/task/selfList \
+  --header 'Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE2NzU1ODA2NzksImlwIjoiMTI3LjAuMC4xIiwidG9rZW4iOiIxIn0.JhdPb5-pF2_0Q0yIYOhCmVqKy02hMp4FcmabErp3CKQ' \
+  --header 'content-type: multipart/form-data' \
+  --form page=1 \
+  --form pageSize=10 \
+  --form taskType=1 \
+  --form type=0

@@ -1,0 +1,58 @@
+syntax = "proto3";
+option go_package = "project-project/pkg/service/auth";
+
+//import "google/protobuf/empty.proto";
+
+package auth.service;
+
+message AuthRpcRequest {
+  int64 memberId = 1;
+  string organizationCode = 2;
+  int64 page = 3;
+  int64 pageSize = 4;
+  string action = 5;
+  int64 id = 6;
+  repeated string nodes = 7;
+}
+message ProjectAuth{
+  int64 id = 1;
+  string OrganizationCode = 2;
+  string Title = 3;
+  string CreateAt = 4;
+  int32 Sort = 5;
+  int32 status = 6;
+  string desc = 7;
+  int64 CreateBy = 8;
+  int32 IsDefault = 9;
+  string Type = 10;
+  int32 CanDelete = 11;
+}
+message ListAuth{
+  repeated ProjectAuth list = 1;
+  int64  total = 2;
+}
+message ProjectNode{
+  int64 id = 1;
+  string node = 2;
+  string title = 3;
+  string pnode = 4;
+  int32 isLogin = 5;
+  int32 isMenu = 6;
+  int32 isAuth = 7;
+  bool checked = 8;
+  string key = 9;
+  repeated ProjectNode children = 10;
+}
+message ApplyResponse {
+  repeated ProjectNode list = 1;
+  repeated string checkedList = 2;
+}
+message AuthNodesResponse {
+  repeated string list = 1;
+}
+
+service AuthService {
+  rpc AuthList(AuthRpcRequest) returns(ListAuth){}
+  rpc Apply(AuthRpcRequest) returns(ApplyResponse){}
+  rpc AuthNodesByMemberId(AuthRpcRequest) returns(AuthNodesResponse){}
+}

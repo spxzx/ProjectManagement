@@ -1,0 +1,60 @@
+server:
+  name: "project-project"
+  port: "127.0.0.1:10002"
+grpc:
+  addr: "127.0.0.1:11002"
+  name: "project-project"
+  version: "1.0.0"
+  weight: 2
+etcd:
+  addrs:
+    - "127.0.0.1:12379"
+zap:
+  debugFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\debug\\debug.log"
+  infoFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\info\\info.log"
+  warnFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\warn\\warn.log"
+  maxAge: 28
+  maxSize: 500
+  maxBackups: 3
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+mysql:
+  username: root
+  password: spx@yp
+  host: 127.0.0.1
+  port: 3309
+  db: project_management
+  tablePrefix: "pm_"
+jwt:
+  accessExp: 7
+  refreshExp: 14
+  accessSecret: g2r3fa
+  refreshSecret: 13f3ah
+db:
+  separation: false
+  master:
+    name: master
+    username: root
+    password: spx@yp
+    host: 127.0.0.1
+    port: 3309
+    db: project_management
+    tablePrefix: "pm_"
+  slave:
+    - username: root
+      password: spx@yp
+      host: 127.0.0.1
+      port: 3309
+      db: project_management_slave1
+      tablePrefix: "pm_"
+      name: slave1
+    - username: root
+      password: spx@yp
+      host: 127.0.0.1
+      port: 3309
+      db: project_management_slave1
+      tablePrefix: "pm_"
+      name: slave2

@@ -1,0 +1,1 @@
+protoc --go_out=./login --go_opt=paths=source_relative --go-grpc_out=./login --go-grpc_opt=paths=source_relative  login_service.proto

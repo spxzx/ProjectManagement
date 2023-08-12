@@ -1,0 +1,17 @@
+# 需要注意的是在填写ip地址时候，不能只用端口号（针对于etcd和grpc），否则无法发现服务
+# 暂时只能做出这样的解释了，所以带上 127.0.0.1
+server:
+  name: "project-api"
+  port: "127.0.0.1:80"
+grpc:
+  addr: "127.0.0.1:8888"
+etcd:
+  addrs:
+    - "127.0.0.1:12379"
+zap:
+  debugFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\debug\\debug.log"
+  infoFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\info\\info.log"
+  warnFileName: "D:\\Environment\\Go\\gopath\\src\\ProjectManagement\\logs\\warn\\warn.log"
+  maxAge: 28
+  maxSize: 500
+  maxBackups: 3

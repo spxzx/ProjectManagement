@@ -1,0 +1,1 @@
+protoc --go_out=./project --go_opt=paths=source_relative --go-grpc_out=./project --go-grpc_opt=paths=source_relative  project_service.proto

@@ -1,0 +1,1 @@
+protoc --go_out=./department --go_opt=paths=source_relative --go-grpc_out=./department --go-grpc_opt=paths=source_relative  department_service.proto

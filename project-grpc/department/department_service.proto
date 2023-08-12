@@ -1,0 +1,35 @@
+syntax = "proto3";
+option go_package = "project-project/pkg/service/department";
+
+//import "google/protobuf/empty.proto";
+
+package department.service;
+
+message DepartmentRpcRequest {
+  int64 memberId = 1;
+  string organizationCode = 2;
+  int64 page = 3;
+  int64 pageSize = 4;
+  string departmentCode = 5;
+  string parentDepartmentCode = 6;
+  string name = 7;
+}
+message Department{
+  int64 id = 1;
+  string code = 2;
+  string OrganizationCode = 3;
+  string Name = 4;
+  string createTime = 5;
+  string pcode = 6;
+  string path = 7;
+}
+message ListDepartment{
+  repeated Department list = 1;
+  int64  total = 2;
+}
+
+service DepartmentService {
+  rpc SaveDepartment(DepartmentRpcRequest) returns(Department){}
+  rpc getDepartmentList(DepartmentRpcRequest) returns(ListDepartment){}
+  rpc ReadDepartment(DepartmentRpcRequest) returns(Department){}
+}
